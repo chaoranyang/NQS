@@ -16,7 +16,6 @@ from config import ini_config, encode
 from hamiltonian import H_act_on
 from vit import ViTNQS
 
-# ============ 局部短别名(可选,让代码更接近你原来的写法)============
 No = physics.No
 Nb = physics.Nb
 NS = train.NS
@@ -64,7 +63,7 @@ def run_training():
 
         # ---------- (3) 编码成图片 + 一次性前向 ----------
         # 把整个扩展空间编码成 (N_se, Np, NL) 的 0/1 图片
-        bits_se = encode(Se_list)              # 若你的 encode 仍需要参数,用:
+        bits_se = encode(Se_list)              # 若encode 仍需要参数,用:
                                                # bits_se = encode(Se_list, No, Nb)
         x_jax = jnp.asarray(bits_se)           # numpy -> jax 数组
         logpsi = model(x_jax)                  # (N_se,),logψ(s)
